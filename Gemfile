@@ -32,6 +32,7 @@ gem 'simplecov', require: false
 gem 'nokogiri'
 gem 'json_builder'
 
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw)
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
