@@ -15,17 +15,14 @@ describe CSVExporter do
 
   it 'should should return a header on the first line of the file' do
     result = exporter.export_friends
-    expect(result).to start_with 'my_name,my_email,friend_name,friend_email'
+    expect(result).to eq "my_name,my_email,friend_name,friend_email\n"
   end
 
   context 'content' do
     let(:result){exporter.export_friends(friends_hash,current_user_hash)}
 
     it 'should include a line containing my email and my name' do
-      expect(result).to include 'Lucas,lucasaliba@gmail.com'
-    end
-    it 'should include a line containing my friends email and my friends name' do
-      expect(result).to include 'QA Couse User 1,qacourseuser1@avenuecode.com'
+      expect(result).to include "Lucas,lucasaliba@gmail.com,QA Couse User 1,qacourseuser1@avenuecode.com\n"
     end
   end
 end

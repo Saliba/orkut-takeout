@@ -31,6 +31,6 @@ describe OrkutClient do
 
   xit 'shoud throw an exception' do
     orkut_client = OrkutClient.new
-    expect(orkut_client.get_current_user_info).to raise_error
+    expect(orkut_client.get_current_user_info).to raise_error(/user not signed in/)
   end
 end
