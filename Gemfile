@@ -46,3 +46,9 @@ gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw)
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem 'guard'
+gem 'guard-rails', '~> 0.7.2'
+gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+gem 'guard-rspec'
+gem 'guard-livereload'

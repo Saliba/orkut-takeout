@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe FirstSocialMediaController do 
+describe SecondSocialMediaController do
    
    let(:stubbed_sign_in_response){ 
    	stubbed_sign_in_response = double()
@@ -41,7 +41,7 @@ describe FirstSocialMediaController do
         expect { get :export }.to raise_error(/User missing/) 
    end
 
-   it "should export my data to csv format when I enter my credentials" do 
+   it "should export my data to xml format when I enter my credentials" do
         allow(RestClient).to receive(:post)
         .and_return(stubbed_sign_in_response)
        
@@ -53,7 +53,8 @@ describe FirstSocialMediaController do
         
         get :export, user: "my_user@me", password: "my_password"
 
-        expect(response.body).to start_with "my_name,my_email,friend_name,friend_email\n"
+        xml_exported = Hash.from_xml(response.body)
+        expect(xml_exported['user']['name']).to eq('Pedro')
    end
 end
 
